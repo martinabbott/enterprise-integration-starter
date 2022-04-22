@@ -27,4 +27,4 @@ jobs:
           resourceGroupName: ${{ secrets.AZURE_RESOURCE_GROUP_DEV }}
           template: ./templates/main.bicep
           parameters: ./templates/main.parameters-dev.json
-          failOnStdErr: true
+          failOnStdErr: false
