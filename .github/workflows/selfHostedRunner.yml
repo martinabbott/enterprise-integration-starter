@@ -40,4 +40,4 @@ jobs:
           # Share the same parameters file for consistency
           # with the network naming and address spaces
           parameters: ./templates/main-selfHostedRunner.parameters-dev.json selfHostedRunnerVmAdminUserName=${{ secrets.RUNNER_VM_ADMIN_USERNAME_DEV }} selfHostedRunnerVmAdminPassword=${{ secrets.RUNNER_VM_ADMIN_PASSWORD_DEV }}
-          failOnStdErr: true
+          failOnStdErr: false
