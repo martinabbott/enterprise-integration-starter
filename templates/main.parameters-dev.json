@@ -71,7 +71,7 @@
     },
     "apimProperties": {
       "value": {
-        "apimName": "apim-eis-dev-auea",
+        "apimName": "apim-eis-new-dev-auea",
         "sku": {
           "name": "Developer",
           "capacity": 1
