@@ -8,6 +8,7 @@ param publisherUserEmail string
 param publisherName string
 param notificationSenderEmail string
 param apimResourcePrefix string
+param location string = resourceGroup().location
 
 var logicAppBackendName = '${logicAppName}-backend'
 var logicAppNameValueName = '${logicAppName}-name-value'
@@ -26,7 +27,7 @@ resource logicApp 'Microsoft.Web/sites@2020-12-01' existing = {
 
 resource apim 'Microsoft.ApiManagement/service@2021-01-01-preview' = {
   name: apimName
-  location: resourceGroup().location
+  location: location
   sku: {
     name: apimSkuName
     capacity: apimSkuCapacity
