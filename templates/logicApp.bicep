@@ -1,3 +1,4 @@
+param location string = resourceGroup().location
 param logicAppAspName string
 param logicAppAspSku object = {
   name: 'WS1'
@@ -12,7 +13,7 @@ param storageAccountDetails object
 
 resource appServicePlanLogicApp 'Microsoft.Web/serverfarms@2018-02-01' = {
   name: logicAppAspName
-  location: resourceGroup().location
+  location: location
   sku: {
     name: logicAppAspSku.name
     tier: logicAppAspSku.tier
@@ -26,7 +27,7 @@ resource appServicePlanLogicApp 'Microsoft.Web/serverfarms@2018-02-01' = {
 
 resource appServiceLogicApp 'Microsoft.Web/sites@2018-11-01' = {
   name: logicAppName
-  location: resourceGroup().location
+  location: location
   kind: 'functionapp,workflowapp'
   identity: {
     type: 'SystemAssigned'
