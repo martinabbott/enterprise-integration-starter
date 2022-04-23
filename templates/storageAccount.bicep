@@ -1,4 +1,5 @@
 param storageAccountName string
+param location string = resourceGroup().location
 
 @allowed([
   'Standard_LRS'
@@ -10,7 +11,7 @@ param storageAccountType string = 'Standard_LRS'
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: storageAccountName
-  location: resourceGroup().location
+  location: location
 
   sku: {
     name: storageAccountType
