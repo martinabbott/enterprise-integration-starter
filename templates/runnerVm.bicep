@@ -8,6 +8,7 @@ param vmImagePublisher string
 param vmImageOffer string
 param vmImageSku string
 param vmImageVersion string
+param location string = resourceGroup().location
 
 @secure()
 param selfHostedRunnerVmAdminUserName string
@@ -28,7 +29,7 @@ resource defaultSubnet 'Microsoft.Network/virtualNetworks/subnets@2020-06-01' ex
 
 resource selfHostedRunnerNic 'Microsoft.Network/networkInterfaces@2020-08-01' = {
   name: networkInterfaceName
-  location: resourceGroup().location
+  location: location
   properties: {
     ipConfigurations: [
       {
@@ -57,7 +58,7 @@ resource selfHostedRunnerNic 'Microsoft.Network/networkInterfaces@2020-08-01' = 
 
 resource selfHostedRunnerVm 'Microsoft.Compute/virtualMachines@2019-07-01' = {
   name: vmName
-  location: resourceGroup().location
+  location: location
   properties: {
     hardwareProfile: {
       vmSize: vmSize
