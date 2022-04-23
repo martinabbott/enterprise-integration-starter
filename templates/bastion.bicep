@@ -2,6 +2,7 @@ param vnetName string
 param bastionSubnetName string
 param bastionName string
 param bastionPublicIpAddressName string
+param location string = resourceGroup().location
 
 resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' existing = {
   name: vnetName
@@ -14,7 +15,7 @@ resource bastionSubnet 'Microsoft.Network/virtualNetworks/subnets@2020-06-01' ex
 
 resource bastionPublicIp 'Microsoft.Network/publicIpAddresses@2020-05-01' = {
   name: bastionPublicIpAddressName
-  location: resourceGroup().location
+  location: location
   sku: {
     name: 'Standard'
   }
@@ -25,7 +26,7 @@ resource bastionPublicIp 'Microsoft.Network/publicIpAddresses@2020-05-01' = {
 
 resource bastion 'Microsoft.Network/bastionHosts@2021-02-01' = {
   name: bastionName
-  location: resourceGroup().location
+  location: location
   properties: {
     ipConfigurations: [
       {
