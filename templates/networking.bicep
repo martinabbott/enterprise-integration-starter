@@ -10,10 +10,11 @@ param apimSnetAddressPrefix string
 param applicationGatewaySnetAddressPrefix string
 param bastionSubnetAddressPrefix string
 param bastionSubnetName string
+param location string = resourceGroup().location
 
 resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' = {
   name: vnetName
-  location: resourceGroup().location
+  location: location
   properties: {
     addressSpace: {
       addressPrefixes: [
