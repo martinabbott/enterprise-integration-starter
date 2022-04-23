@@ -7,7 +7,7 @@ param snetId string
 param vnetId string
 param defaultSubnetName string
 
-var location = resourceGroup().location
+param location = resourceGroup().location
 
 resource dnsZone 'Microsoft.Network/privateDnsZones@2018-09-01' = {
   name: dnsZoneName
