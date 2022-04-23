@@ -8,6 +8,7 @@ param sku string
 param allocationMethod string
 param vnetName string
 param apimName string
+param location string = resourceGroup().location
 
 var frontEndPort80 = 'port_80'
 var publicIpName = 'appGwPublicFrontendIp'
@@ -33,7 +34,7 @@ resource apim 'Microsoft.ApiManagement/service@2021-01-01-preview' existing = {
 
 resource publicIpAddress 'Microsoft.Network/publicIPAddresses@2020-08-01' = {
   name: publicIpAddressName
-  location: resourceGroup().location
+  location: location
   sku: {
     name: sku
   }
@@ -44,7 +45,7 @@ resource publicIpAddress 'Microsoft.Network/publicIPAddresses@2020-08-01' = {
 
 resource applicationGateway 'Microsoft.Network/applicationGateways@2019-09-01' = {
   name: applicationGatewayName
-  location: resourceGroup().location
+  location: location
   properties: {
     sku: {
       name: skuSize
